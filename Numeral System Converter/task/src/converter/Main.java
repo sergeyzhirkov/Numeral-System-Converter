@@ -5,17 +5,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        long number = scanner.nextLong();
-        int radix = scanner.nextInt();
-        String prefix = new String();
-
-        if (radix == 2) {
-            prefix = "0b";
-        } else if (radix == 8) {
-            prefix = "0";
-        } else if (radix == 16) {
-            prefix = "0x";
+        int sourceRadix = scanner.nextInt();
+        int sourceNumber;
+        if (sourceRadix != 1) {
+            sourceNumber = Integer.parseInt(scanner.next(), sourceRadix);
+        } else {
+            sourceNumber = scanner.next().length();
         }
-        System.out.println(prefix + Long.toString(number, radix));
+
+        int targetRadix = scanner.nextInt();
+        if (targetRadix==1){
+            for (int i = 0; i < sourceNumber; i++) {
+                System.out.print(1);
+            }
+        } else {
+            System.out.println(Integer.toString(sourceNumber, targetRadix));
+        }
     }
 }

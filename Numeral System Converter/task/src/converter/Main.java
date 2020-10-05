@@ -14,7 +14,7 @@ public class Main {
         }
 
         int targetRadix = scanner.nextInt();
-        if (targetRadix==1){
+        if (targetRadix == 1) {
             for (int i = 0; i < sourceNumber; i++) {
                 System.out.print(1);
             }

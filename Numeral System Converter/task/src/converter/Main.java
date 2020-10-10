@@ -4,11 +4,30 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        boolean isError = false;
         Scanner scanner = new Scanner(System.in);
-        int radixSource = scanner.nextInt();
+        int radixSource = 0;
+        try {
+            radixSource = scanner.nextInt();
+        } catch (Exception e) {
+            isError = true;
+        }
         String numberSource = scanner.next();
-        int radixTarget = scanner.nextInt();
-        System.out.println(converter(numberSource, radixSource, radixTarget));
+        int radixTarget = 0;
+        try {
+            radixTarget = scanner.nextInt();
+        } catch (Exception e) {
+            isError = true;
+        }
+        if (radixSource < 1 || radixSource > 36 || radixTarget < 1 || radixTarget > 36) {
+            isError = true;
+        }
+        if (isError) {
+            System.out.println("error");
+        } else {
+            System.out.println(converter(numberSource, radixSource, radixTarget));
+        }
+
     }
 
     public static String converter(String numberSource, int radixSource, int radixTarget) {
